@@ -82,7 +82,7 @@ client.on('message', (message) => {
         x.user.send(`<@${message.author.id}> ${contents}`);
       });
   
-      return message.reply('공지를 전송했습니다.');
+      return message.reply('전송했습니다. 빠슝');
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
