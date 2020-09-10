@@ -1,9 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.env.token;
+const welcomeChannelName = "안녕하세요";
+const byeChannelName = "안녕히가세요";
+const welcomeChannelComment = "어서오세요.";
+const byeChannelComment = "안녕히가세요.";
 
 client.on('ready', () => {
-  console.log('켬.');
+  console.log('켰다.');
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -13,7 +17,7 @@ client.on("guildMemberAdd", (member) => {
 
   welcomeChannel.send(`<@${newUser.id}> ${welcomeChannelComment}\n`);
 
-  member.addRole(guild.roles.find(role => role.name == "유저"));
+  member.addRole(guild.roles.find(role => role.name == "게스트"));
 });
 
 client.on("guildMemberRemove", (member) => {
@@ -35,8 +39,8 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     let embed = new Discord.RichEmbed()
       .setTitle('타이틀')
-      .setURL('https://lineageus.quv.kr/')
-      .setAuthor('리니지 어스', img, 'https://lineageus.quv.kr/')
+      .setURL('http://www.naver.com')
+      .setAuthor('나긋해', img, 'http://www.naver.com')
       .setThumbnail(img)
       .addBlankField()
       .addField('Inline field title', 'Some value here')
@@ -82,7 +86,7 @@ client.on('message', (message) => {
         x.user.send(`<@${message.author.id}> ${contents}`);
       });
   
-      return message.reply('전송 빠슝!');
+      return message.reply('공지를 전송했습니다.');
     } else {
       return message.reply('채널에서 실행해주세요.');
     }
